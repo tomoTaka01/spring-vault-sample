@@ -7,16 +7,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.vault.authentication.ClientAuthentication;
-import org.springframework.vault.authentication.TokenAuthentication;
-import org.springframework.vault.client.VaultEndpoint;
-import org.springframework.vault.config.AbstractVaultConfiguration;
 import org.springframework.vault.core.VaultTemplate;
 import org.springframework.vault.support.VaultResponse;
 import org.springframework.vault.support.VaultResponseSupport;
-
-import java.net.URI;
 
 @SpringBootApplication
 public class SpringVaultSampleApplication {
@@ -33,7 +26,7 @@ public class SpringVaultSampleApplication {
             VaultResponseSupport<Hello> hello = vaultTemplate.read("secret/hello", Hello.class);
             logger.info("vault value is [{}]", hello.getData().getVault());
             VaultResponse response = vaultTemplate.read("secret/hello");
-            logger.info("vault json response is [{}]",response.getData());
+            logger.info("vault json response is [{}]", response.getData());
         };
     }
 
@@ -49,17 +42,17 @@ public class SpringVaultSampleApplication {
         }
     }
 
-    @Configuration
-    public static class VaultConfig extends AbstractVaultConfiguration {
-        @Override
-        public VaultEndpoint vaultEndpoint() {
-//			return VaultEndpoint.create("localhost", 8200);
-            return VaultEndpoint.from(URI.create("http://localhost:8200"));
-        }
-
-        @Override
-        public ClientAuthentication clientAuthentication() {
-            return new TokenAuthentication("907b6f15-ac68-f3f5-2ed6-c3fca36b96a8");
-        }
-    }
+//    @Configuration
+//    public static class VaultConfig extends AbstractVaultConfiguration {
+//        @Override
+//        public VaultEndpoint vaultEndpoint() {
+////			return VaultEndpoint.create("localhost", 8200);
+//            return VaultEndpoint.from(URI.create("http://localhost:8200"));
+//        }
+//
+//        @Override
+//        public ClientAuthentication clientAuthentication() {
+//            return new TokenAuthentication("5435004b-4780-db19-9a2f-b26ba2fcbd48");
+//        }
+//    }
 }
