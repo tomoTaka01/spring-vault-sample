@@ -42,17 +42,4 @@ public class SpringVaultSampleApplication {
         }
     }
 
-//    @Configuration
-//    public static class VaultConfig extends AbstractVaultConfiguration {
-//        @Override
-//        public VaultEndpoint vaultEndpoint() {
-////			return VaultEndpoint.create("localhost", 8200);
-//            return VaultEndpoint.from(URI.create("http://localhost:8200"));
-//        }
-//
-//        @Override
-//        public ClientAuthentication clientAuthentication() {
-//            return new TokenAuthentication("5435004b-4780-db19-9a2f-b26ba2fcbd48");
-//        }
-//    }
 }
